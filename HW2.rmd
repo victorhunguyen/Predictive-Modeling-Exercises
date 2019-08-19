@@ -3,9 +3,9 @@ title: "STAT 380 Exercises"
 author: "Jacob Padden, Daniel Oh, Chris Steeves, Victor Nguyen"
 date: "8/14/2019"
 output:
-  html_document: default
-  pdf_document: default
   word_document: default
+  pdf_document: default
+  html_document: default
 ---
 
 QUESTION 1: Green Building
@@ -16,7 +16,6 @@ library(dplyr)
 ```
 
 ```{r}
-setwd("~/STA380-master/STA380-master/data")
 gb = read.csv("greenbuildings.csv")
 gb$green_rating = as.logical(gb$green_rating)
 gb = filter(gb, leasing_rate>=.1)
@@ -445,7 +444,6 @@ library(purrr)
 library(factoextra)
 library(cluster)
 
-setwd("~/STA380-master/STA380-master/data")
 twitter = read.csv("social_marketing.csv")
 
 #Trimming columns that won't be used: chatter, uncategorized, spam, and adult.
@@ -514,16 +512,16 @@ clust10 <- valuesues[order(valuesues$X10 ,decreasing=T)[1:5],]
 
 #Top categories of each cluster
 par(mfrow=c(2,2))
-barplot(cluster1$X1, main="Cluster 1", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster1))
-barplot(cluster2$X2, main="Cluster 2", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster2))
-barplot(cluster3$X3, main="Cluster 3", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster3))
-barplot(cluster4$X4, main="Cluster 4", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster4))
-barplot(cluster5$X5, main="Cluster 5", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster5))
-barplot(cluster6$X6, main="Cluster 6", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster6))
-barplot(cluster7$X7, main="Cluster 7", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster7))
-barplot(cluster8$X8, main="Cluster 8", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster8))
-barplot(cluster9$X9, main="Cluster 9", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster9))
-barplot(cluster10$X10, main="Cluster 10", xlab="Top Categories", ylab="Frequency", names.arg=row.names(cluster10))
+barplot(clust1$X1, main="Cluster 1", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust1))
+barplot(clust2$X2, main="Cluster 2", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust2))
+barplot(clust3$X3, main="Cluster 3", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust3))
+barplot(clust4$X4, main="Cluster 4", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust4))
+barplot(clust5$X5, main="Cluster 5", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust5))
+barplot(clust6$X6, main="Cluster 6", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust6))
+barplot(clust7$X7, main="Cluster 7", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust7))
+barplot(clust8$X8, main="Cluster 8", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust8))
+barplot(clust9$X9, main="Cluster 9", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust9))
+barplot(clust10$X10, main="Cluster 10", xlab="Top Categories", ylab="Frequency", names.arg=row.names(clust10))
 ```
 
 
@@ -540,7 +538,6 @@ library(proxy)
 readerPlain = function(fname){
   readPlain(elem=list(content=readLines(fname)), 
             id=fname, language='en') }
-setwd("~/STA380-master/STA380-master/data/ReutersC50/C50train")
 doc_list = Sys.glob('*')
 file_list = Sys.glob(paste0(doc_list, '/*.txt'))
 
@@ -577,7 +574,6 @@ tfidf = weightTfIdf(DTM_train)
 readerPlain = function(fname){
   readPlain(elem=list(content=readLines(fname)), 
             id=fname, language='en') }
-setwd("~/STA380-master/STA380-master/data/ReutersC50/C50test")
 doc_list2 = Sys.glob('*')
 file_list = Sys.glob(paste0(doc_list2, '/*.txt'))
 file_list = Sys.glob(paste0(doc_list2, '/*.txt'))
@@ -730,7 +726,7 @@ library(arulesViz)
 #                              sep=',')
 
 
-groceries = read.transactions("C:\\Users\\Daniel Oh\\Documents\\STA380-master\\STA380-master\\data\\groceries.txt",sep=',')
+groceries = read.transactions("groceries.txt",sep=',')
 
 inspect(groceries[1:10])
 
