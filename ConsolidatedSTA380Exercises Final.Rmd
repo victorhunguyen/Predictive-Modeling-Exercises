@@ -418,7 +418,7 @@ As you can see from the graph above, our hypthesis was fairly consistent with th
 
 ```{r}
 finalValues_melted=melt(finalValues, id.vars = "sim")
-finalValues_melted
+#finalValues_melted
 ggplot(finalValues_melted) + geom_boxplot(aes(x=variable, y=value)) + ylab("Final Return") + xlab("") + ggtitle("Boxplot for Final Returns")
 ```
 
@@ -680,7 +680,7 @@ for( i in 1:2500){
 ```
 
 
-```{r}
+```{r include=FALSE}
 #PCA w/ Multinomial Regression
 library(glmnet)
 library(nnet)
@@ -696,7 +696,9 @@ new_test_x = X_test_actual %*% iso
 # Set Up inputs
 train_X = scores
 train_y = author_names
+```
 
+```{r}
 # Run multinomial regression
 multi = glmnet(x=train_X, y=train_y, alpha=0, family="multinomial")
 
